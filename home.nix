@@ -13,6 +13,12 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
 
+    initContent = ''
+      if [[ -z "$ZELLIJ" && -t 1 ]]; then
+        exec zellij attach default --create
+      fi
+    '';
+
     oh-my-zsh = {
       enable = true;
       plugins = [
@@ -103,7 +109,7 @@
 
   programs.zellij = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
   };
 
   home.file.".cache/oh-my-zsh/completions/.keep".text = "";
